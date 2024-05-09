@@ -61,11 +61,9 @@ namespace Content.Client.Options.UI.Tabs
 
             // Channel can be null in replays so.
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-            ShowOocPatronColor.Visible = _playerManager.LocalSession?.Channel?.UserData.PatronTier is { };
 
             HudThemeOption.OnItemSelected += OnHudThemeChanged;
             DiscordRich.OnToggled += OnCheckBoxToggled;
-            ShowOocPatronColor.OnToggled += OnCheckBoxToggled;
             ShowLoocAboveHeadCheckBox.OnToggled += OnCheckBoxToggled;
             ShowHeldItemCheckBox.OnToggled += OnCheckBoxToggled;
             ShowCombatModeIndicatorsCheckBox.OnToggled += OnCheckBoxToggled;
@@ -82,7 +80,6 @@ namespace Content.Client.Options.UI.Tabs
 
             HudThemeOption.SelectId(_hudThemeIdToIndex.GetValueOrDefault(_cfg.GetCVar(CVars.InterfaceTheme), 0));
             DiscordRich.Pressed = _cfg.GetCVar(CVars.DiscordEnabled);
-            ShowOocPatronColor.Pressed = _cfg.GetCVar(CCVars.ShowOocPatronColor);
             ShowLoocAboveHeadCheckBox.Pressed = _cfg.GetCVar(CCVars.LoocAboveHeadShow);
             ShowHeldItemCheckBox.Pressed = _cfg.GetCVar(CCVars.HudHeldItemShow);
             ShowCombatModeIndicatorsCheckBox.Pressed = _cfg.GetCVar(CCVars.CombatModeIndicatorsPointShow);
@@ -140,7 +137,6 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.HudHeldItemShow, ShowHeldItemCheckBox.Pressed);
             _cfg.SetCVar(CCVars.CombatModeIndicatorsPointShow, ShowCombatModeIndicatorsCheckBox.Pressed);
             _cfg.SetCVar(CCVars.OpaqueStorageWindow, OpaqueStorageWindowCheckBox.Pressed);
-            _cfg.SetCVar(CCVars.ShowOocPatronColor, ShowOocPatronColor.Pressed);
             _cfg.SetCVar(CCVars.LoocAboveHeadShow, ShowLoocAboveHeadCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ChatEnableFancyBubbles, FancySpeechBubblesCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ChatFancyNameBackground, FancyNameBackgroundsCheckBox.Pressed);
@@ -169,7 +165,6 @@ namespace Content.Client.Options.UI.Tabs
             var isShowHeldItemSame = ShowHeldItemCheckBox.Pressed == _cfg.GetCVar(CCVars.HudHeldItemShow);
             var isCombatModeIndicatorsSame = ShowCombatModeIndicatorsCheckBox.Pressed == _cfg.GetCVar(CCVars.CombatModeIndicatorsPointShow);
             var isOpaqueStorageWindow = OpaqueStorageWindowCheckBox.Pressed == _cfg.GetCVar(CCVars.OpaqueStorageWindow);
-            var isOocPatronColorShowSame = ShowOocPatronColor.Pressed == _cfg.GetCVar(CCVars.ShowOocPatronColor);
             var isLoocShowSame = ShowLoocAboveHeadCheckBox.Pressed == _cfg.GetCVar(CCVars.LoocAboveHeadShow);
             var isFancyChatSame = FancySpeechBubblesCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatEnableFancyBubbles);
             var isFancyBackgroundSame = FancyNameBackgroundsCheckBox.Pressed == _cfg.GetCVar(CCVars.ChatFancyNameBackground);
@@ -187,7 +182,6 @@ namespace Content.Client.Options.UI.Tabs
                                    isShowHeldItemSame &&
                                    isCombatModeIndicatorsSame &&
                                    isOpaqueStorageWindow &&
-                                   isOocPatronColorShowSame &&
                                    isLoocShowSame &&
                                    isFancyChatSame &&
                                    isFancyBackgroundSame &&

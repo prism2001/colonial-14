@@ -1167,9 +1167,6 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> OocEnableDuringRound =
             CVarDef.Create("ooc.enable_during_round", false, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
 
-        public static readonly CVarDef<bool> ShowOocPatronColor =
-            CVarDef.Create("ooc.show_ooc_patron_color", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.CLIENT);
-
         /*
          * LOOC
          */
@@ -1880,12 +1877,6 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<string> InfoLinksWiki =
             CVarDef.Create("infolinks.wiki", "", CVar.SERVER | CVar.REPLICATED);
-
-        /// <summary>
-        /// Link to Patreon. Not shown in the launcher currently.
-        /// </summary>
-        public static readonly CVarDef<string> InfoLinksPatreon =
-            CVarDef.Create("infolinks.patreon", "", CVar.SERVER | CVar.REPLICATED);
 
         /// <summary>
         /// Link to the bug report form.
